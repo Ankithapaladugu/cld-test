@@ -1,0 +1,18 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .app-content {
+    margin-left: 250px;
+    margin-top: 60px;
+    padding: 20px;
+    flex: 1;
+    transition: margin-left 0.3s ease;
+  }
+  
+  /* Adjust content area when sidebar is collapsed */
+  .sidebar-collapsed .app-content {
+    margin-left: 60px;
+  }
