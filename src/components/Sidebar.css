@@ -74,3 +74,56 @@
   .app-sidebar.collapsed .label {
     display: none;
   }
+  /* Submenu styling */
+.has-submenu {
+  position: relative;
+}
+
+.has-submenu .menu-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.has-submenu .menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.submenu-arrow {
+  margin-left: auto;
+  font-size: 10px;
+  transition: transform 0.2s;
+}
+
+.submenu {
+  list-style: none;
+  padding-left: 20px;
+  margin: 0;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-out;
+}
+
+.has-submenu.expanded .submenu {
+  max-height: 200px;
+  transition: max-height 0.5s ease-in;
+}
+
+.submenu li {
+  margin: 0;
+}
+
+.submenu li a {
+  padding: 8px 15px 8px 25px;
+  font-size: 14px;
+}
+
+/* Adjust the sidebar toggle to handle submenu expansion */
+.app-sidebar.collapsed .has-submenu .menu-item:hover + .submenu,
+.app-sidebar.collapsed .submenu:hover {
+  display: none;
+}

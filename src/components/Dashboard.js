@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import Layout from './Layout';
 import './Dashboard.css';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+
 
 // Initialize Supabase client
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
@@ -204,57 +204,7 @@ const Dashboard = () => {
           </div>
         </div>
         
-        <div className="dashboard-sections">
-          <div className="dashboard-section">
-            <h2>Financial Trends</h2>
-            <div className="chart-container">
-              <ResponsiveContainer width="100%" height={300}>
-                <LineChart data={chartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="month" />
-                  <YAxis />
-                  <Tooltip formatter={(value) => formatEuro(value)} />
-                  <Line type="monotone" dataKey="revenue" stroke="#4caf50" strokeWidth={2} name="Revenue" />
-                  <Line type="monotone" dataKey="expenses" stroke="#f44336" strokeWidth={2} name="Expenses" />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
-          
-          <div className="dashboard-section">
-            <h2>Recent Activity</h2>
-            <ul className="activity-list">
-              <li>
-                <div className="activity-date">20 Mar</div>
-                <div className="activity-content">
-                  <span className="activity-title">Invoice #INV-2025-046 paid</span>
-                  <span className="activity-amount positive">{formatEuro(15420.50)}</span>
-                </div>
-              </li>
-              <li>
-                <div className="activity-date">18 Mar</div>
-                <div className="activity-content">
-                  <span className="activity-title">Quarterly tax payment</span>
-                  <span className="activity-amount negative">{formatEuro(8750.25)}</span>
-                </div>
-              </li>
-              <li>
-                <div className="activity-date">15 Mar</div>
-                <div className="activity-content">
-                  <span className="activity-title">New subscription service added</span>
-                  <span className="activity-amount negative">{formatEuro(299.99)}</span>
-                </div>
-              </li>
-              <li>
-                <div className="activity-date">10 Mar</div>
-                <div className="activity-content">
-                  <span className="activity-title">Invoice #INV-2025-045 paid</span>
-                  <span className="activity-amount positive">{formatEuro(8760.00)}</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
+        
       </div>
     </Layout>
   );

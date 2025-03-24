@@ -4,9 +4,14 @@ import './Sidebar.css';
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const [documentsExpanded, setDocumentsExpanded] = useState(false);
 
   const toggleSidebar = () => {
     setCollapsed(!collapsed);
+  };
+
+  const toggleDocumentsMenu = () => {
+    setDocumentsExpanded(!documentsExpanded);
   };
 
   return (
@@ -35,10 +40,41 @@ const Sidebar = () => {
               {!collapsed && <span className="label">Invoices</span>}
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/documents" className={({isActive}) => isActive ? 'active' : ''}>
+          
+          {/* Documents with submenu */}
+          <li className={documentsExpanded ? 'has-submenu expanded' : 'has-submenu'}>
+            <div className="menu-item" onClick={toggleDocumentsMenu}>
               <span className="icon">📄</span>
-              {!collapsed && <span className="label">Documents</span>}
+              {!collapsed && (
+                <>
+                  <span className="label">Documents</span>
+                  <span className="submenu-arrow">{documentsExpanded ? '▼' : '▶'}</span>
+                </>
+              )}
+            </div>
+            
+            {!collapsed && documentsExpanded && (
+              <ul className="submenu">
+                <li>
+                  <NavLink to="/documents/kyc" className={({isActive}) => isActive ? 'active' : ''}>
+                    <span className="icon">🆔</span>
+                    <span className="label">KYC Documents</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/documents/financial" className={({isActive}) => isActive ? 'active' : ''}>
+                    <span className="icon">💼</span>
+                    <span className="label">Financial Documents</span>
+                  </NavLink>
+                </li>
+              </ul>
+            )}
+          </li>
+          
+          <li>
+            <NavLink to="/generate-forms" className={({isActive}) => isActive ? 'active' : ''}>
+              <span className="icon">📋</span>
+              {!collapsed && <span className="label">Generate Forms</span>}
             </NavLink>
           </li>
           <li>

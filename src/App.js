@@ -2,7 +2,10 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
-import ResetPassword from './components/Resetpassword'; // Import the default export
+
+import KYCDocuments from './components/KYCDocuments';
+import FinancialDocuments from './components/FinancialDocuments';
+
 
 function App() {
   return (
@@ -10,8 +13,12 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route path="/documents/kyc" element={<KYCDocuments />} />
+        <Route path="/documents/financial" element={<FinancialDocuments />} />
+       
+
         <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/reset-password" element={<ResetPassword />} /> {/* Changed path and fixed comment */}
       </Routes>
     </BrowserRouter>
   );
